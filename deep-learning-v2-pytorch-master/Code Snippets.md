@@ -43,6 +43,12 @@ Note, no slashes after the directory name.  And you need to assign the directory
 `aws s3 put-object --bucket <bucket_name> --key <folder/>`
 `aws s3 put-object --bucket <bucket_name> --key <file>`
 
+### Get IP addresses of EC2 instances and store to a file
+
+Need to look more into the --query flag
+
+`aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory.txt`
+
 ## SageMaker SDK
 
 ### Displaying list of files in a Bucket/folder
