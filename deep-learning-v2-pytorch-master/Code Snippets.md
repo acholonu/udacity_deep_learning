@@ -49,6 +49,16 @@ Need to look more into the --query flag
 
 `aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory.txt`
 
+If you on want certain instances you can use the --filter flag
+
+```bash
+    aws ec2 describe-instances \
+    \
+    --query 'Reservations[*].Instances[*].PublicIpAddress' \
+    --filters "Name=tag:Project,Values=application" \ #Where you have a tag name Project on the ec2 instance, and the value is set to application 
+    --output text >> inventory
+```
+
 ## SageMaker SDK
 
 ### Displaying list of files in a Bucket/folder
