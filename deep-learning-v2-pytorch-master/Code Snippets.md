@@ -148,3 +148,12 @@ row_counts = pd.DataFrame(columns = ['Filename','Row Counts'])
 filename = os.path.basename("path/to/file/sample.txt")
 print(filename)
 ```
+
+## Special Keys
+
+### VS Code
+
+#### To comment/uncomment blocks of YAML code
+
+- To comment: `Command + K + C`
+- To uncomment: `Command + K + U`
