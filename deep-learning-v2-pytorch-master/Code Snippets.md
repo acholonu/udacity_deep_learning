@@ -59,6 +59,10 @@ If you on want certain instances you can use the --filter flag
     --output text >> inventory
 ```
 
+## To put a folder into an s3 bucket
+
+`aws s3api put-object --bucket bucketname --key <foldername>/`
+
 ## SageMaker SDK
 
 ### Displaying list of files in a Bucket/folder
