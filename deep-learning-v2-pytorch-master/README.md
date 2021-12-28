@@ -54,7 +54,7 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
 ---
 
-# Dependencies
+## Dependencies
 
 ## Configure and Manage Your Environment with Anaconda
 
