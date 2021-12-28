@@ -43,6 +43,26 @@ Note, no slashes after the directory name.  And you need to assign the directory
 `aws s3 put-object --bucket <bucket_name> --key <folder/>`
 `aws s3 put-object --bucket <bucket_name> --key <file>`
 
+### Get IP addresses of EC2 instances and store to a file
+
+Need to look more into the --query flag
+
+`aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory.txt`
+
+If you on want certain instances you can use the --filter flag
+
+```bash
+    aws ec2 describe-instances \
+    \
+    --query 'Reservations[*].Instances[*].PublicIpAddress' \
+    --filters "Name=tag:Project,Values=application" \ #Where you have a tag name Project on the ec2 instance, and the value is set to application 
+    --output text >> inventory
+```
+
+## To put a folder into an s3 bucket
+
+`aws s3api put-object --bucket bucketname --key <foldername>/`
+
 ## SageMaker SDK
 
 ### Displaying list of files in a Bucket/folder
@@ -132,3 +152,12 @@ row_counts = pd.DataFrame(columns = ['Filename','Row Counts'])
 filename = os.path.basename("path/to/file/sample.txt")
 print(filename)
 ```
+
+## Special Keys
+
+### VS Code
+
+#### To comment/uncomment blocks of YAML code
+
+- To comment: `Command + K + C`
+- To uncomment: `Command + K + U`
