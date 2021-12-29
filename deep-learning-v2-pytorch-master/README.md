@@ -8,6 +8,8 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
 ### Tutorials
 
+See Notes here: <https://docs.google.com/document/d/1HGs8V3IxhgoJeEFUBjCCEHDH-TVk_afJaOHyiL_Y9TU/edit#>
+
 ### Introduction to Neural Networks
 
 * [Introduction to Neural Networks](https://github.com/udacity/deep-learning-v2-pytorch/tree/master/intro-neural-networks): Learn how to implement gradient descent and apply it to predicting patterns in student admissions data.
