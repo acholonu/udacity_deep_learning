@@ -1,26 +1,32 @@
 import numpy as np
+from typing import List
 
-
+# Going to try to make a neural network that can handle multi-layer architecture
 class NeuralNetwork(object):
-    def __init__(self, input_nodes, hidden_nodes, output_nodes, learning_rate):
+    def __init__(self, 
+        num_input_nodes:int, 
+        num_hidden_nodes:List[int], 
+        num_output_nodes:int, 
+        learning_rate:float
+        )->None:
         # Set number of nodes in input, hidden and output layers.
-        self.input_nodes = input_nodes
-        self.hidden_nodes = hidden_nodes
-        self.output_nodes = output_nodes
+        self.num_input_nodes = num_input_nodes
+        self.num_hidden_nodes = num_hidden_nodes
+        self.num_output_nodes = num_output_nodes
 
         # Initialize weights
-        self.weights_input_to_hidden = np.random.normal(0.0, self.input_nodes**-0.5, 
-                                       (self.input_nodes, self.hidden_nodes))
+        self.weights_input_to_hidden = np.random.normal(0.0, self.num_input_nodes**-0.5, 
+                                       (self.num_input_nodes, self.num_hidden_nodes))
 
-        self.weights_hidden_to_output = np.random.normal(0.0, self.hidden_nodes**-0.5, 
-                                       (self.hidden_nodes, self.output_nodes))
-        self.lr = learning_rate
+        self.weights_hidden_to_output = np.random.normal(0.0, self.num_hidden_nodes**-0.5, 
+                                       (self.num_hidden_nodes, self.num_output_nodes))
+        self.learning_rate = learning_rate
         
         #### TODO: Set self.activation_function to your implemented sigmoid function ####
         #
         # Note: in Python, you can define a function with a lambda expression,
         # as shown below.
-        self.activation_function = lambda x : 0  # Replace 0 with your sigmoid calculation.
+        self.activation_function = lambda x : self.sigmoid(x)  # Replace 0 with your sigmoid calculation.
         
         ### If the lambda code above is not something you're familiar with,
         # You can uncomment out the following three lines and put your 
@@ -30,6 +36,18 @@ class NeuralNetwork(object):
         #    return 0  # Replace 0 with your sigmoid calculation here
         #self.activation_function = sigmoid
                     
+    def sigmoid(self,x)->float:
+        # TODO: Return the result of calculating the sigmoid activation function
+        #       shown in the lectures
+        return 1/(1+np.exp(-x))
+    
+    # def sigmoid_output_2_derivative(self,output)->float:
+    #     # TODO: Return the derivative of the sigmoid activation function, 
+    #     #       where "output" is the original output from the sigmoid function 
+    #     return (self.sigmoid(output) * (1 - self.sigmoid(output)))
+    #Not applying activation function here
+    def sigmoid_output_2_derivative(self,output):
+        return output * (1 - output)
 
     def train(self, features, targets):
         ''' Train the network on batch of features and targets. 
@@ -44,6 +62,8 @@ class NeuralNetwork(object):
         n_records = features.shape[0]
         delta_weights_i_h = np.zeros(self.weights_input_to_hidden.shape)
         delta_weights_h_o = np.zeros(self.weights_hidden_to_output.shape)
+
+        # Send in features and targets for each 
         for X, y in zip(features, targets):
             
             final_outputs, hidden_outputs = self.forward_pass_train(X)  # Implement the forward pass function below
