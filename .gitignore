@@ -2,3 +2,5 @@
 .DS_Store
 .DS_STORE
 *.code-workspace
+
+*.cpython*
