@@ -117,7 +117,7 @@ class NeuralNetwork(object):
 
         # TODO: Output layer - Replace these values with your calculations.
         final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
-        final_outputs = self.sigmoid(final_inputs) # signals from final output layer
+        final_outputs = final_inputs # activation function is f(x) = x
         
         return final_outputs, hidden_outputs
 
@@ -144,11 +144,11 @@ class NeuralNetwork(object):
         # TODO: Backpropagated error terms - Replace these values with your calculations.
         output_error_term = hidden_error.dot(self.weights_hidden_to_output.T)
         
-        hidden_error_term = output_error_term * self.sigmoid_output_2_derivative(X.T)
+        hidden_error_term = output_error_term
         
         # TODO: Add Weight step (input to hidden) and Weight step (hidden to output).
         # Weight step (input to hidden)
-        delta_weights_i_h += -output_error_term * self.learning_rate
+        delta_weights_i_h += -output_error_term * self.learning_rate  # DO I NEED THE NEGATIVE HERE?
         # Weight step (hidden to output)
         delta_weights_h_o += -hidden_error_term * self.learning_rate
         return delta_weights_i_h, delta_weights_h_o
