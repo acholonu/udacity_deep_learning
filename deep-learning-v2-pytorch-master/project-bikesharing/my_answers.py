@@ -2,11 +2,12 @@ import numpy as np
 from typing import List
 
 # Going to try to make a neural network that can handle multi-layer architecture
+# Later
 # Why doesn't it have a bias term?
 class NeuralNetwork(object):
     def __init__(self, 
         num_input_nodes:int, 
-        num_hidden_nodes:List[int], 
+        num_hidden_nodes:int, 
         num_output_nodes:int, 
         learning_rate:float
         )->None:
@@ -14,9 +15,7 @@ class NeuralNetwork(object):
 
         Args:
             num_input_nodes (int): Number of features
-            num_hidden_nodes (List[int]): the number of nodes in a hidden layer. The length of
-                the list, tells you how many hidden layers there are.  Each value at an index
-                is the number of nodes in that hidden layer.
+            num_hidden_nodes (int): the number of nodes in a hidden layer. Always have on 1 hidden layer.
             num_output_nodes (int): number of output nodes
             learning_rate (float): The step size for use in gradient descent
         """
