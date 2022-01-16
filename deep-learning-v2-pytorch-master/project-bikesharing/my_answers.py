@@ -55,7 +55,7 @@ class NeuralNetwork(object):
             equation (shown below), to convert linear combinations to values
             between 0 and 1.
         """
-        return 1/(1+np.exp(-x))
+        return 1.0/(1+np.exp(-x))
     
     # def sigmoid_output_2_derivative(self,output)->float:
     #     # TODO: Return the derivative of the sigmoid activation function, 
@@ -98,8 +98,9 @@ class NeuralNetwork(object):
             # Implement the backproagation function below
             delta_weights_i_h, delta_weights_h_o = self.backpropagation(final_outputs, hidden_outputs, X, y, 
                                                                         delta_weights_i_h, delta_weights_h_o)
-        self.update_weights(delta_weights_i_h, delta_weights_h_o, n_records)
+            self.update_weights(delta_weights_i_h, delta_weights_h_o, n_records) # I put this in the for loop
 
+        print(f"final weights:\n Input to Hidden: {self.weights_input_to_hidden} \n Hidden to Output {self.weights_hidden_to_output}")
 
     def forward_pass_train(self, X):
         ''' Implement forward pass here 
@@ -142,7 +143,7 @@ class NeuralNetwork(object):
         hidden_error = error * self.sigmoid_output_2_derivative(hidden_outputs)
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
-        output_error_term = hidden_error.dot(self.weights_hidden_to_output.T)
+        output_error_term = hidden_error.dot(self.weights_hidden_to_output)
         
         hidden_error_term = output_error_term
         
@@ -181,8 +182,8 @@ class NeuralNetwork(object):
         
         # TODO: Output layer - Replace these values with the appropriate calculations.
         final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
-        final_outputs = self.sigmoid(final_inputs) # signals from final output layer 
-        
+        final_outputs = final_inputs # signals from final output layer.  Activation function at this node is f(x) = x 
+        print(f"Run final output: {final_outputs}")
         return final_outputs
 
 
