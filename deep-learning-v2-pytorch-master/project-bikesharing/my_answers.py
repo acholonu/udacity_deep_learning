@@ -47,9 +47,15 @@ class NeuralNetwork(object):
         #    return 0  # Replace 0 with your sigmoid calculation here
         #self.activation_function = sigmoid
                     
-    def sigmoid(self,x)->float:
+    def sigmoid(self, x)->float:
         # TODO: Return the result of calculating the sigmoid activation function
         #       shown in the lectures
+        """Activation function.  That translates points to a probability space.
+        
+            There are other activation functions.  But this one uses the sigmoid
+            equation (shown below), to convert linear combinations to values
+            between 0 and 1.
+        """
         return 1/(1+np.exp(-x))
     
     # def sigmoid_output_2_derivative(self,output)->float:
@@ -57,8 +63,20 @@ class NeuralNetwork(object):
     #     #       where "output" is the original output from the sigmoid function 
     #     return (self.sigmoid(output) * (1 - self.sigmoid(output)))
     #Not applying activation function here
-    def sigmoid_output_2_derivative(self,output):
+    def sigmoid_output_2_derivative(self, output:float):
+        """Derivative of the sigmoid activation function.
+
+        Args:
+            output ([float]): output value of the node being evaluated.
+
+        Returns:
+            float: derivate of the sigmoid function at the output value
+        """
         return output * (1 - output)
+
+    def MSE(self, y, Y):
+        """Error function for continuous outputs."""
+        return np.mean((y-Y)**2)
 
     def train(self, features, targets):
         ''' Train the network on batch of features and targets. 
@@ -95,12 +113,12 @@ class NeuralNetwork(object):
         #### Implement the forward pass here ####
         ### Forward pass ###
         # TODO: Hidden layer - Replace these values with your calculations.
-        hidden_inputs = None # signals into hidden layer
-        hidden_outputs = None # signals from hidden layer
+        hidden_inputs = X.dot(self.weights_input_to_hidden) # signals into hidden layer
+        hidden_outputs = self.sigmoid(hidden_inputs) # signals from hidden layer
 
         # TODO: Output layer - Replace these values with your calculations.
-        final_inputs = None # signals into final output layer
-        final_outputs = None # signals from final output layer
+        final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
+        final_outputs = self.sigmoid(final_inputs) # signals from final output layer
         
         return final_outputs, hidden_outputs
 
