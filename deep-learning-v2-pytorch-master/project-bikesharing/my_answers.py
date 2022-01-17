@@ -147,9 +147,9 @@ class NeuralNetwork(object):
         # TODO: Add Weight step (input to hidden) and Weight step (hidden to output).
         # Weight step (input to hidden)
         delta_input = -np.dot(hidden_error_term.T, np.array([X]))  # DO I NEED THE NEGATIVE HERE?
-        delta_weights_i_h += delta_input.T # Correct
+        delta_weights_i_h += delta_input.T
 
-        # Weight step (hidden to output) - NOT WORKING
+        # Weight step (hidden to output)
         delta_output = -np.dot(np.array([error]),np.array([hidden_outputs]))
         delta_weights_h_o +=  delta_output.T
         return delta_weights_i_h, delta_weights_h_o
