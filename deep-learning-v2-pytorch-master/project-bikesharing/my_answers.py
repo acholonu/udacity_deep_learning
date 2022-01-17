@@ -73,10 +73,6 @@ class NeuralNetwork(object):
         """
         return output * (1 - output)
 
-    def MSE(self, y, Y):
-        """Error function for continuous outputs."""
-        return np.mean((y-Y)**2)
-
     def train(self, features, targets):
         ''' Train the network on batch of features and targets. 
         
