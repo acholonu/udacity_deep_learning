@@ -135,20 +135,23 @@ class NeuralNetwork(object):
 
         # TODO: Output error - Replace this value with your calculations.
         error = final_outputs - y # Output layer error is the difference between desired target and actual output.
-        
+
         # TODO: Calculate the hidden layer's contribution to the error
-        hidden_error = error * self.sigmoid_output_2_derivative(hidden_outputs)
+        #hidden_error = error * self.sigmoid_output_2_derivative(hidden_outputs) # original
+        output_error_term = error * (self.weights_hidden_to_output.T) # activation function = f(x) = x, so derviative = 1
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
-        output_error_term = hidden_error.dot(self.weights_hidden_to_output)
-        
-        hidden_error_term = output_error_term
+        #output_error_term = hidden_error.dot(self.weights_hidden_to_output)
+        hidden_error_term = output_error_term * self.sigmoid_output_2_derivative(hidden_outputs)
         
         # TODO: Add Weight step (input to hidden) and Weight step (hidden to output).
         # Weight step (input to hidden)
-        delta_weights_i_h += -output_error_term  # DO I NEED THE NEGATIVE HERE?
-        # Weight step (hidden to output)
-        delta_weights_h_o += -hidden_error_term
+        delta_input = -np.dot(hidden_error_term.T, np.array([X]))  # DO I NEED THE NEGATIVE HERE?
+        delta_weights_i_h += delta_input.T # Correct
+
+        # Weight step (hidden to output) - NOT WORKING
+        delta_output = -np.dot(np.array([error]),np.array([hidden_outputs]))
+        delta_weights_h_o +=  delta_output.T
         return delta_weights_i_h, delta_weights_h_o
 
     def update_weights(self, delta_weights_i_h, delta_weights_h_o, n_records):
