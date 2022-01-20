@@ -183,14 +183,31 @@ class NeuralNetwork(object):
         # TODO: Output layer - Replace these values with the appropriate calculations.
         final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # signals from final output layer.  Activation function at this node is f(x) = x 
-        print(f"Run final output: {final_outputs}")
         return final_outputs
 
 
 #########################################################
 # Set your hyperparameters here
+#
+# Original Values
+# ---------------
+# iterations = 100 :(same thing as an epoch)
+# learning_rate = 0.1
+# hidden_nodes = 2
+# output_nodes = 1
+#
+# Requirements:
+# - The activation function should be a sigmoid
+# - Training loss should be less than 0.09
+# - The number of epochs should be between 50 and 15000
+# - Validation loss should be less than 0.18
+# - The number of hidden nodes should be 5 and 100
+# - There should be exactly one output node
+# - The learning_rate should be between 0.05 and 5
+#
 ##########################################################
-iterations = 100
-learning_rate = 0.1
-hidden_nodes = 2
+
+iterations = 3000 
+learning_rate = .4
+hidden_nodes = 15
 output_nodes = 1
