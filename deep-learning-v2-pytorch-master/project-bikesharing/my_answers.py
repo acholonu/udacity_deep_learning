@@ -46,7 +46,7 @@ class NeuralNetwork(object):
         #    return 0  # Replace 0 with your sigmoid calculation here
         #self.activation_function = sigmoid
                     
-    def sigmoid(self, x)->float:
+    def sigmoid(self, x:float)->float:
         # TODO: Return the result of calculating the sigmoid activation function
         #       shown in the lectures
         """Activation function.  That translates points to a probability space.
@@ -62,7 +62,7 @@ class NeuralNetwork(object):
     #     #       where "output" is the original output from the sigmoid function 
     #     return (self.sigmoid(output) * (1 - self.sigmoid(output)))
     #Not applying activation function here
-    def sigmoid_output_2_derivative(self, output:float):
+    def sigmoid_output_2_derivative(self, output:float)->float:
         """Derivative of the sigmoid activation function.
 
         Args:
@@ -110,11 +110,11 @@ class NeuralNetwork(object):
         #### Implement the forward pass here ####
         ### Forward pass ###
         # TODO: Hidden layer - Replace these values with your calculations.
-        hidden_inputs = X.dot(self.weights_input_to_hidden) # signals into hidden layer
+        hidden_inputs = np.dot(X,self.weights_input_to_hidden) # signals into hidden layer
         hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
 
         # TODO: Output layer - Replace these values with your calculations.
-        final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
+        final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # activation function is f(x) = x
         
         return final_outputs, hidden_outputs
@@ -134,23 +134,22 @@ class NeuralNetwork(object):
         ### Backward pass ###
 
         # TODO: Output error - Replace this value with your calculations.
-        error = final_outputs - y # Output layer error is the difference between desired target and actual output.
+        error = y - final_outputs # Output layer error is the difference between desired target and actual output.
 
         # TODO: Calculate the hidden layer's contribution to the error
         #hidden_error = error * self.sigmoid_output_2_derivative(hidden_outputs) # original
-        output_error_term = error * (self.weights_hidden_to_output.T) # activation function = f(x) = x, so derviative = 1
+        output_error_term = np.dot(error, self.weights_hidden_to_output.T) # activation function = f(x) = x, so derviative = 1
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
-        #output_error_term = hidden_error.dot(self.weights_hidden_to_output)
         hidden_error_term = output_error_term * self.sigmoid_output_2_derivative(hidden_outputs)
         
         # TODO: Add Weight step (input to hidden) and Weight step (hidden to output).
         # Weight step (input to hidden)
-        delta_input = -np.dot(hidden_error_term.T, np.array([X]))  # DO I NEED THE NEGATIVE HERE?
+        delta_input = np.dot(np.array([hidden_error_term]).T, np.array([X]))
         delta_weights_i_h += delta_input.T
 
         # Weight step (hidden to output)
-        delta_output = -np.dot(np.array([error]),np.array([hidden_outputs]))
+        delta_output = np.dot(np.array([error]),np.array([hidden_outputs]))
         delta_weights_h_o +=  delta_output.T
         return delta_weights_i_h, delta_weights_h_o
 
@@ -177,11 +176,11 @@ class NeuralNetwork(object):
         
         #### Implement the forward pass here ####
         # TODO: Hidden layer - replace these values with the appropriate calculations.
-        hidden_inputs = features.dot(self.weights_input_to_hidden) # signals into hidden layer
+        hidden_inputs = np.dot(features,self.weights_input_to_hidden) # signals into hidden layer
         hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
         
         # TODO: Output layer - Replace these values with the appropriate calculations.
-        final_inputs = hidden_outputs.dot(self.weights_hidden_to_output) # signals into final output layer
+        final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # signals from final output layer.  Activation function at this node is f(x) = x 
         return final_outputs
 
