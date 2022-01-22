@@ -63,10 +63,6 @@ def main():
         # Go through a random batch of 128 records from the training data set
         batch = np.random.choice(train_features.index, size=128)
         X, y = train_features.iloc[batch].values, train_targets.iloc[batch]['cnt']
-
-        # For Testing
-        if ii > 3000:
-            print(f"TESTING iteration {ii}")
                                 
         network.train(X, y)
         
