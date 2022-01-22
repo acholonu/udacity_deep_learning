@@ -207,6 +207,6 @@ class NeuralNetwork(object):
 ##########################################################
 
 iterations = 3000 
-learning_rate = .4
-hidden_nodes = 15
+learning_rate = .7
+hidden_nodes = 25
 output_nodes = 1
