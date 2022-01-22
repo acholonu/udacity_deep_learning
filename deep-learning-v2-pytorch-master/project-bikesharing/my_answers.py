@@ -97,7 +97,7 @@ class NeuralNetwork(object):
         
         self.update_weights(delta_weights_i_h, delta_weights_h_o, n_records)
 
-        print(f"final weights:\n Input to Hidden: {self.weights_input_to_hidden} \n Hidden to Output {self.weights_hidden_to_output}")
+        #print(f"final weights:\n Input to Hidden: {self.weights_input_to_hidden} \n Hidden to Output {self.weights_hidden_to_output}")
 
     def forward_pass_train(self, X):
         ''' Implement forward pass here 
