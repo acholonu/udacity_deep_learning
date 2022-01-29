@@ -2,3 +2,6 @@
 .github/**
 .DS_Store
 project-bikesharing.zip
+
+# pytorch models
+*.pth
