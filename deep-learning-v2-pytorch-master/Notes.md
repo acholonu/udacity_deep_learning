@@ -1,6 +1,11 @@
 # Overview
 
-This document contains notes from the Udacity deep learning course. 
+This document contains notes from the Udacity deep learning course.
+
+## Python packages need to install
+
+- [OpenCV](https://docs.opencv.org/4.5.5/index.html): `pip install opencv-python`.  This is a computer vision library that helps you do image processing and machine learning on images.  Great for Convolutional Nerual Networks (CNN's).
+- [Pytorch](https://pytorch.org/get-started/locally/) `pip3 install torch torchvision`.  Deep learning framework.  A framework for create neural networks.  Also, has dummy dataset that you can use. Documentation can be found here <https://pytorch.org/docs/stable/index.html>
 
 ## Activation Functions
 
