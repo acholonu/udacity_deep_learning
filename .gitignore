@@ -10,4 +10,9 @@
 Cat_Dog_data.zip
 *-ubyte
 *-ubyte.gz
+
+# data
 data/*
+cifar-10-batches-py
+cifar-10-python.tar.gz
+
