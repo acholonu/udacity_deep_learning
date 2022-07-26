@@ -16,3 +16,7 @@ data/*
 cifar-10-batches-py
 cifar-10-python.tar.gz
 
+# VSCODE files
+.vscode
+.vscode/*
+settings.json
