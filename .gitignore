@@ -18,5 +18,5 @@ cifar-10-python.tar.gz
 
 # VSCODE files
 .vscode
-.vscode/*
+.vscode/
 settings.json
