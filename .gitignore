@@ -1,7 +1,11 @@
 .DS_Store/*
 .DS_Store
 .DS_STORE
+
+# VS Code
 *.code-workspace
+.vscode/*
+settings.json
 
 *.cpython*
 
