@@ -2,7 +2,7 @@ absl-py==1.0.0
 aiohttp==3.8.1
 aiosignal==1.2.0
 ansi2html==1.7.0
-ansible==5.3.0
+ansible==7.0.0
 ansible-core==2.12.2
 appnope==0.1.2
 argon2-cffi==21.3.0
