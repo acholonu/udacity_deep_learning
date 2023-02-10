@@ -90,7 +90,7 @@ pathos==0.3.0
 patsy==0.5.3
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==9.4.0
+Pillow==9.3.0
 platformdirs==3.0.0
 pluggy==1.0.0
 portend==3.1.0
