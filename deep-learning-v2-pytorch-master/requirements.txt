@@ -97,7 +97,7 @@ portend==3.1.0
 pox==0.3.2
 ppft==1.7.6.6
 prompt-toolkit==3.0.36
-protobuf==4.21.12
+protobuf==3.19.5
 protobuf3-to-dict==0.1.5
 psutil==5.9.4
 ptyprocess==0.7.0
