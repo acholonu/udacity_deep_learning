@@ -85,7 +85,7 @@ importlib-resources==5.4.0
 iniconfig==1.1.1
 invoke==1.6.0
 ipykernel==6.9.0
-ipython==8.0.1
+ipython==8.10.0
 ipython-genutils==0.2.0
 ipywidgets==7.6.5
 isort==5.10.1
