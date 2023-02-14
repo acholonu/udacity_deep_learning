@@ -149,8 +149,11 @@ cd deep-learning-v2-pytorch
 ```
 pip install -r requirements.txt
 ```
+7. Syncing Forked Repository with original Udacity repo
 
-7. That's it!
+url: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-command-line
+
+8. That's it!
 
 Now most of the `deep-learning` libraries are available to you. Very occasionally, you will see a repository with an addition requirements file, which exists should you want to use TensorFlow and Keras, for example. In this case, you're encouraged to install another library to your existing environment, or create a new environment for a specific project. 
 
