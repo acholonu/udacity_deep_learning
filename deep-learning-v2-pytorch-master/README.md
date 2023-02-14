@@ -151,7 +151,24 @@ pip install -r requirements.txt
 ```
 7. Syncing Forked Repository with original Udacity repo
 
-url: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-command-line
+Setting Up Sync: <https://docs.github.com/en/get-started/quickstart/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository>
+
+Doing the Sync: <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-command-line>
+
+I had to use: `git merge upstream/master --allow-unrelated-histories` For everything to work.  I had to do this after I fetched from the upstream.  So the commands are as follows:
+
+```bash
+# Set up upstream (you only have to do this once)
+git remote -v # you should only see your origin upstream
+git remote add upstream <https:Clone address> 
+git remote -v # you should see the upstream remote
+
+# Do Sync
+git fetch upstream # gets changes
+git checkout main # Switch to my local main
+# Note, below I am using master, because udacity's main branch is still called master
+git merge upstream/master --allow-unrelated-histories # you may not need the flag
+```
 
 8. That's it!
 
