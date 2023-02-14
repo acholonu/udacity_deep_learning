@@ -37,7 +37,7 @@ colorama==0.4.3
 colour==0.1.5
 config==0.5.1
 confuse==1.7.0
-cryptography==36.0.1
+cryptography==39.0.1
 cycler==0.11.0
 Cython==0.29.27
 dash==2.1.0
