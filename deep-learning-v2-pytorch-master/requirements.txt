@@ -147,7 +147,7 @@ typing_extensions==4.4.0
 udacity-pa==0.2.9
 urllib3==1.26.14
 wcwidth==0.2.6
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 wrapt==1.14.1
 ws4py==0.5.1
 xyzservices==2022.9.0
